@@ -2,7 +2,7 @@ pragma solidity ^0.4.25;
 
 import {ERC721 as ERC721} from "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
 
-contract Marshall {
+contract Marshal {
     address public owner;
     address public token;
 

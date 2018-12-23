@@ -23,7 +23,7 @@
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
-
+var DefaultBuilder = require("truffle-default-builder");
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -34,6 +34,9 @@ module.exports = {
    *
    * $ truffle test --network <network-name>
    */
+  
+  build: new DefaultBuilder({
+  }),
 
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
@@ -44,7 +47,7 @@ module.exports = {
     //
     development: {
      host: "127.0.0.1",     // Localhost (default: none)
-     port: 8545,            // Standard Ethereum port (default: none)
+     port: 7545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
     }
 
