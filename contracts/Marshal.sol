@@ -1,6 +1,6 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.25;
 
-import {ERC721 as ERC721} from "../node_modules/openzeppelin-solidity/contracts/token/ERC721";
+import {ERC721 as ERC721} from "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
 
 contract Marshall {
     address public owner;
@@ -11,10 +11,9 @@ contract Marshall {
         token = _token;
     }
 
-    function getToken(uint256 tokenId, uint8 v, bytes32 r, bytes32 s) public returns (bool) {
+    function retrieveToken(uint256 tokenId, uint8 v, bytes32 r, bytes32 s) public returns (bool) {
         validateSignature(tokenId, v, r, s);
-        require(ERC721(token).transferFrom(from, to, tokenId), "transfer error: either from lack of approval or invalid tokenId");
-        return true;
+        ERC721(token).transferFrom(owner, msg.sender, tokenId);
     }
 
     function validateSignature(uint256 tokenId, uint8 v, bytes32 r, bytes32 s) private view {
